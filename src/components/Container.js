@@ -1,21 +1,21 @@
 import React from "react";
 
-function Container({
-  header,
-  children,
-  textPosition = "", // possible values: left, right, center
-  direction = "horizontal", // possible values: vertical, horizontal
-  contentPosition = "center", // possible values: left, right, center
-}) {
-  return (
-    <div className={`container ${textPosition}`}>
-      {header ? <h2>{header}</h2> : null}
+function Container(props) {
+  const {
+    direction = 'row',
+    header = '',
+    textPosition = 'left',
+    contentPosition = 'center',
+    children
+  } = props;
 
-      <div className={`container-children ${direction} ${contentPosition}`}>
+  return (
+    <div className={`container ${direction}`}>
+      <h1 className={`header ${textPosition}`}>{header}</h1>
+      <div className={`content ${contentPosition}`}>
         {children}
       </div>
     </div>
   );
 }
-
 export default Container;
